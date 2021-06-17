@@ -12,6 +12,7 @@
  */
 
 
+// 方法一：直接排序
 int* sortedSquares(int* nums, int numsSize, int* returnSize){
 	int *newNums = (int *)malloc(numsSize * sizeof(int));
 	
@@ -35,6 +36,75 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize){
 	return newNums;
 }
 
+
+//方法二：分成正负两个数组进行处理
+int *sortedSquares2(int *nums, int numsSize, int *returnSize) 
+{
+	int firstNegativeIndex = -1;
+	int l = 0, r = numsSize - 1;
+	while(l <= r){
+		int mid = l + (r - l) / 2;
+		if(nums[mid] < 0) {
+			firstNegativeIndex = mid;
+			l = mid + 1;
+		}
+		else {
+			r = mid - 1;
+		}
+	}
+
+	int newSize = 0;
+	int *newNums = (int *)malloc(numsSize * sizeof(int));
+	l = firstNegativeIndex;
+	r = firstNegativeIndex + 1;
+	while(l >= 0 || r < numsSize) {
+		if(l < 0) { //左边数据没有，按顺序放右边数据。
+			newNums[newSize++] = nums[r] * nums[r];
+			r++;
+		}
+		else if(r == numsSize) {
+			newNums[newSize++] = nums[l] * nums[l];
+			l--;
+		}
+		else if(nums[r] * nums[r] > nums[l] * nums[l]) {
+			newNums[newSize++] = nums[l] * nums[l];
+			l--;
+		}
+		else {
+			newNums[newSize++] = nums[r] * nums[r];
+			r++;
+		}
+	}
+	*returnSize = newSize;
+	return newNums;
+}
+
+//方法三：双指针，但指针分别指向头和尾, 比较头和尾的平方，大的逆序放入新数组中。
+int *sortedSquares3(int *nums, int numsSize, int *returnSize) {
+	int *newNums = (int *)malloc(numsSize * sizeof(int));
+
+	int l = 0;
+	int r = numsSize - 1;
+	int pos = r;
+	while(l < r) {
+		int lValue = nums[l] * nums[l];
+		int rValue = nums[r] * nums[r];
+		if(lValue > rValue) {
+			newNums[pos] = lValue;
+			l++;
+		}
+		else {
+			newNums[pos] = rValue;
+			r--;
+		}
+		pos--;
+	}
+
+	*returnSize = numsSize;
+	return newNums;	
+}
+
+
 void numsPrint(int *nums, int numsSize)
 {
 	int i = 0;
@@ -48,11 +118,11 @@ void numsPrint(int *nums, int numsSize)
 }
 void sortedSquaresTestCase1(void)
 {
-	int nums[] = {-4,-1,0,3,10};
+	int nums[] = {-9,-8,-6,-4,-1,0,3,10};
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
 	int numsNewSize = 0;
 	numsPrint(nums, numsSize);
-	int *newNums = sortedSquares(nums, numsSize, &numsNewSize);
+	int *newNums = sortedSquares3(nums, numsSize, &numsNewSize);
 	numsPrint(newNums, numsNewSize);
 	free(newNums);
 }
@@ -63,7 +133,7 @@ void sortedSquaresTestCase2(void)
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
 	int numsNewSize = 0;
 	numsPrint(nums, numsSize);
-	int *newNums = sortedSquares(nums, numsSize, &numsNewSize);
+	int *newNums = sortedSquares3(nums, numsSize, &numsNewSize);
 	numsPrint(newNums, numsNewSize);
 	free(newNums);
 }
@@ -74,7 +144,18 @@ void sortedSquaresTestCase3(void)
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
 	int numsNewSize = 0;
 	numsPrint(nums, numsSize);
-	int *newNums = sortedSquares(nums, numsSize, &numsNewSize);
+	int *newNums = sortedSquares3(nums, numsSize, &numsNewSize);
+	numsPrint(newNums, numsNewSize);
+	free(newNums);
+}
+
+void sortedSquaresTestCase4(void)
+{
+	int nums[] = {-4,-1,0,3,10};
+	int numsSize = sizeof(nums) / sizeof(nums[0]);
+	int numsNewSize = 0;
+	numsPrint(nums, numsSize);
+	int *newNums = sortedSquares3(nums, numsSize, &numsNewSize);
 	numsPrint(newNums, numsNewSize);
 	free(newNums);
 }
@@ -85,5 +166,6 @@ void sortedSquaresTest(void)
 	sortedSquaresTestCase1();
 	sortedSquaresTestCase2();
 	sortedSquaresTestCase3();
+	sortedSquaresTestCase4();
 }
 
