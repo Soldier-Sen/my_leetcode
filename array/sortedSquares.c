@@ -105,7 +105,7 @@ int *sortedSquares3(int *nums, int numsSize, int *returnSize) {
 }
 
 
-void numsPrint(int *nums, int numsSize)
+void sortedNumsPrint(int *nums, int numsSize)
 {
 	int i = 0;
 	for(i = 0; i < numsSize && nums; i++)
@@ -121,9 +121,9 @@ void sortedSquaresTestCase1(void)
 	int nums[] = {-9,-8,-6,-4,-1,0,3,10};
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
 	int numsNewSize = 0;
-	numsPrint(nums, numsSize);
+	sortedNumsPrint(nums, numsSize);
 	int *newNums = sortedSquares3(nums, numsSize, &numsNewSize);
-	numsPrint(newNums, numsNewSize);
+	sortedNumsPrint(newNums, numsNewSize);
 	free(newNums);
 }
 
@@ -132,9 +132,9 @@ void sortedSquaresTestCase2(void)
 	int nums[] = {-7,-3,2,3,11};
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
 	int numsNewSize = 0;
-	numsPrint(nums, numsSize);
+	sortedNumsPrint(nums, numsSize);
 	int *newNums = sortedSquares3(nums, numsSize, &numsNewSize);
-	numsPrint(newNums, numsNewSize);
+	sortedNumsPrint(newNums, numsNewSize);
 	free(newNums);
 }
 
@@ -143,9 +143,9 @@ void sortedSquaresTestCase3(void)
 	int nums[] = {2,3,6,11};
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
 	int numsNewSize = 0;
-	numsPrint(nums, numsSize);
+	sortedNumsPrint(nums, numsSize);
 	int *newNums = sortedSquares3(nums, numsSize, &numsNewSize);
-	numsPrint(newNums, numsNewSize);
+	sortedNumsPrint(newNums, numsNewSize);
 	free(newNums);
 }
 
@@ -154,9 +154,9 @@ void sortedSquaresTestCase4(void)
 	int nums[] = {-4,-1,0,3,10};
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
 	int numsNewSize = 0;
-	numsPrint(nums, numsSize);
+	sortedNumsPrint(nums, numsSize);
 	int *newNums = sortedSquares3(nums, numsSize, &numsNewSize);
-	numsPrint(newNums, numsNewSize);
+	sortedNumsPrint(newNums, numsNewSize);
 	free(newNums);
 }
 
