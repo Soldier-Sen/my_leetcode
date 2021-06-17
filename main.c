@@ -65,7 +65,8 @@ int maxProfit2(int* prices, int pricesSize){
 int main(int argc, char *argv[])
 {
 	//removeDuplicatesTest();
-	backspaceCompareTest();
+	//backspaceCompareTest();
+	sortedSquaresTest();
 	//maxProfit2((int *)&g_prices, sizeof(g_prices)/sizeof(g_prices[0]));
 
 	return 0;
