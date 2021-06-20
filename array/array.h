@@ -12,5 +12,17 @@ inline void arrayPrint(int *nums, int numsSize)
 	}
 }
 
+inline void arrayAndTargetPrint(int *nums, int numsSize, int target)
+{
+	int i = 0;
+	for(i = 0; i < numsSize && nums; i++)
+	{
+		if(i == 0) printf("%d [%d,", target, nums[i]);
+		else if(i == numsSize - 1) printf("%d]\n", nums[i]);
+		else printf("%d,", nums[i]);
+	}
+}
+
+
 #endif
 
