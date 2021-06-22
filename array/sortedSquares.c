@@ -114,7 +114,6 @@ void sortedNumsPrint(int *nums, int numsSize)
 		else if(i == numsSize - 1) printf("%d]\n", nums[i]);
 		else printf("%d,", nums[i]);
 	}
-
 }
 void sortedSquaresTestCase1(void)
 {
