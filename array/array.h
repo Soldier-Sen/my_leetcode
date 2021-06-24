@@ -44,6 +44,20 @@ void arrayTwoPrint(int **nums, int rowNums, int colNums)
 	printf("}\n");
 }
 
+inline void matrixPrint(int **matrix, int matrixSize)
+{
+	int (*p)[matrixSize] = matrix; //需要转换，不然直接访问matrix在64位机不能正确访问。
+	
+	for(int i = 0; i < matrixSize; i++){
+		for(int j = 0; j < matrixSize; j++) {
+			if(j == 0)printf("{%d,", p[i][j]);
+			else if(j == matrixSize - 1) printf("%d}", p[i][j]);
+			else printf("%d,", p[i][j]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
 
 #endif
 
