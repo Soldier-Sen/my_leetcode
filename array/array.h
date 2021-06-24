@@ -12,6 +12,9 @@ inline void arrayPrint(int *nums, int numsSize)
 	}
 }
 
+
+
+
 inline void arrayAndTargetPrint(int *nums, int numsSize, int target)
 {
 	int i = 0;
@@ -21,6 +24,24 @@ inline void arrayAndTargetPrint(int *nums, int numsSize, int target)
 		else if(i == numsSize - 1) printf("%d]\n", nums[i]);
 		else printf("%d,", nums[i]);
 	}
+}
+
+void arrayTwoPrint(int **nums, int rowNums, int colNums)
+{
+	int (*p)[colNums] = nums;
+	int i = 0;
+	printf("{");
+	for(i = 0; i < rowNums; i++)
+	{
+		for(int j = 0; j < colNums; j++)
+		{
+			if(j == 0) printf("{%d,", p[i][j]);
+			else if(j == colNums - 1) printf("%d}", p[i][j]);
+			else printf("%d,", p[i][j]);
+		}
+		printf(",");
+	}
+	printf("}\n");
 }
 
 

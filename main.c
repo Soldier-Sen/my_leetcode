@@ -69,7 +69,8 @@ int main(int argc, char *argv[])
 	//sortedSquaresTest();
 	//minSubArrayLenTest();
 	//pivotIndexTest();
-	searchInsertTest();
+	//searchInsertTest();
+	mergeInterlvalsTest();
 	//maxProfit2((int *)&g_prices, sizeof(g_prices)/sizeof(g_prices[0]));
 
 	return 0;
