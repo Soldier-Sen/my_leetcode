@@ -72,8 +72,8 @@ int main(int argc, char *argv[])
 	/*totalFruitTest();*/
 	//pivotIndexTest();
 	//searchInsertTest();
-	mergeInterlvalsTest();
-	/*rotateMatrixTest();*/
+	//mergeInterlvalsTest();
+    rotateMatrixTest();
 	//maxProfit2((int *)&g_prices, sizeof(g_prices)/sizeof(g_prices[0]));
 
 	return 0;

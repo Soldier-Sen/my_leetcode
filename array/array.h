@@ -26,7 +26,7 @@ inline void arrayAndTargetPrint(int *nums, int numsSize, int target)
 	}
 }
 
-void arrayTwoPrint(int **nums, int rowNums, int colNums)
+inline void arrayTwoPrint(int **nums, int rowNums, int colNums)
 {
 	int (*p)[colNums] = nums;
 	int i = 0;

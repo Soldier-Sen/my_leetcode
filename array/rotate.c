@@ -58,6 +58,7 @@ matrix[i].length == n
 
 */
 
+//由外层循环到内层循环旋转
 void rotateMatrix1(int** matrix, int matrixSize, int* matrixColSize){
 	int (*p)[matrixSize] = matrix; // leetcode 不能这样
 
@@ -85,7 +86,7 @@ void rotateMatrixTmp(int** matrix, int matrixSize, int* matrixColSize){
 	}
 }
 
-void rotateMatrix(int** matrix, int matrixSize, int* matrixColSize)
+void rotateMatrix2(int** matrix, int matrixSize, int* matrixColSize)
 {
 	int (*p)[matrixSize] = matrix;
 	
@@ -99,6 +100,32 @@ void rotateMatrix(int** matrix, int matrixSize, int* matrixColSize)
 		}
 	}
 }
+
+// 用翻转代替旋转
+// 先水平翻转，再主对角线翻转。
+void rotateMatrix(int** ma, int matrixSize, int* matrixColSize){
+	int (*matrix)[matrixSize] = ma;
+
+	//水平翻转
+	for(int i = 0; i < matrixSize / 2; i++) {
+		for(int j = 0; j < *matrixColSize; j++) {
+			int temp  = matrix[i][j];
+			matrix[i][j] = matrix[matrixSize - i - 1][j];
+			matrix[matrixSize - i - 1][j] = temp;
+		}
+	}
+	
+	//主对角线翻转
+	for(int i = 0; i < matrixSize; i++) {
+		for(int j = 0; j < i; j++) {
+			int temp  = matrix[i][j];
+			matrix[i][j] = matrix[j][i];
+			matrix[j][i] = temp;
+		}
+	}	
+}
+
+
 void rotateMatrixTestCase1(void)
 {
 	int matrix[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};

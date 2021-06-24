@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
-
+#include "array.h"
 
 /** 209.长度最小的子数组
  * 给定一个含有 n 个正整数的数组和一个正整数 target 。
@@ -78,23 +78,12 @@ int minSubArrayLen(int target, int *nums, int numsSize) {
 }
 
 
-void arrayPrint(int target, int *nums, int numsSize)
-{
-	int i = 0;
-	for(i = 0; i < numsSize && nums; i++)
-	{
-		if(i == 0) printf("%d [%d,", target, nums[i]);
-		else if(i == numsSize - 1) printf("%d]\n", nums[i]);
-		else printf("%d,", nums[i]);
-	}
-
-}
 void minSubArrayLenTestCase1(void)
 {
 	int nums[] = {2,3,1,2,4,3};
 	int target = 7;
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
-	arrayPrint(target, nums, numsSize);
+	arrayAndTargetPrint(target, nums, numsSize);
 	int result = minSubArrayLen(target, nums, numsSize);
 	printf("%s result = %d\n", __func__, result);
 }
@@ -104,7 +93,7 @@ void minSubArrayLenTestCase2(void)
 	int nums[] = {1,4,4};
 	int target = 4;
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
-	arrayPrint(target, nums, numsSize);
+	arrayAndTargetPrint(target, nums, numsSize);
 	int result = minSubArrayLen(target, nums, numsSize);
 	printf("%s result = %d\n", __func__, result);
 }
@@ -114,7 +103,7 @@ void minSubArrayLenTestCase3(void)
 	int nums[] = {1,1,1,1,1,1,1,1};
 	int target = 11;
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
-	arrayPrint(target, nums, numsSize);
+	arrayAndTargetPrint(target, nums, numsSize);
 	int result = minSubArrayLen(target, nums, numsSize);
 	printf("%s result = %d\n", __func__, result);
 }
@@ -124,7 +113,7 @@ void minSubArrayLenTestCase4(void)
 	int nums[] = {9,8,4,3,1, 3, 6, 10};
 	int target = 20;
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
-	arrayPrint(target, nums, numsSize);
+	arrayAndTargetPrint(target, nums, numsSize);
 	int result = minSubArrayLen(target, nums, numsSize);
 	printf("%s result = %d\n", __func__, result);
 }
