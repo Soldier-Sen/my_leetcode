@@ -26,7 +26,7 @@ all:$(TARGET)
 
 $(TARGET):$(OBJS)
 	$(CC) -o $@ $(OBJS) $(CFLAFS) $(LD_FLAGS)
-	@rm -r *.o
+	@rm -r  $(OBJS)
 
 %.o:%.c
 	@$(CC) $(CFLAFS) -c $^ -o $@ $(INCLUDES)
